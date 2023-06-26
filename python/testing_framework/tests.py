@@ -4,6 +4,7 @@ def test_algorithm(algo, arms, num_sims, horizon):
   cumulative_rewards = [0.0 for i in range(num_sims * horizon)]
   sim_nums = [0.0 for i in range(num_sims * horizon)]
   times = [0.0 for i in range(num_sims * horizon)]
+  eps = [algo.epsilon]*(num_sims * horizon)
   
   for sim in range(num_sims):
     sim = sim + 1
@@ -28,5 +29,5 @@ def test_algorithm(algo, arms, num_sims, horizon):
       
       algo.update(chosen_arm, reward)
   
-  return [sim_nums, times, chosen_arms, rewards, cumulative_rewards]
+  return [sim_nums, eps, times, chosen_arms, rewards, cumulative_rewards]
 
